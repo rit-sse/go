@@ -1,0 +1,25 @@
+{
+  "name": "go",
+  "version": "1.0.0",
+  "description": "SSE Link Shortener",
+  "contributors": [
+    {
+      "name": "Kristen Mills",
+      "email": "kristen@kristen-mills.com"
+    }
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rit-sse/go"
+  },
+  "author": "Society of Software Engineers",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rit-sse/go/issues"
+  },
+  "homepage": "https://github.com/rit-sse/go"
+}
