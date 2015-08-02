@@ -1,0 +1,41 @@
+/*
+ * Pinocchio
+ * by Cody Krieger
+ */
+
+input#big {
+    font-size: 30px;
+    height: 40px;
+}
+
+input[type=submit] {
+    font-size: 25px;
+    height: 45px;
+}
+
+#title {
+    margin: 30px 0;
+    font-size: 45px;
+}
+
+table .short-url-col {
+    width: 25%;
+}
+table .full-url-col {
+    /* width: 33%;*/
+}
+table .clicks-col {
+    width: 50px;
+    text-align: right;
+}
+
+.right { text-align: right !important; }
+
+table .action-column { width: 40px; }
+table .action-column .btn-small { padding: 0 6px; }
+
+.alert .close { float: right; }
+
+.important-form-field {
+    display: none;
+}

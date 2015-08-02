@@ -1,3 +1,3 @@
-# GO
+# Go
 
-The sse link shortener that will blow your mind.
+The SSE link shortener that will blow your mind.

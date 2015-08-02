@@ -8,9 +8,10 @@
       "email": "kristen@kristen-mills.com"
     }
   ],
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node ./bin/www",
+    "watch": "gulp"
   },
   "repository": {
     "type": "git",
@@ -21,5 +22,18 @@
   "bugs": {
     "url": "https://github.com/rit-sse/go/issues"
   },
-  "homepage": "https://github.com/rit-sse/go"
+  "homepage": "https://github.com/rit-sse/go",
+  "dependencies": {
+    "express": "^4.13.1",
+    "sse-api-client": "git://github.com/rit-sse/api-client.git"
+  },
+  "devDependencies": {
+    "browserify": "^11.0.1",
+    "gulp": "^3.9.0",
+    "gulp-notify": "^2.2.0",
+    "react": "^0.13.3",
+    "reactify": "^1.1.1",
+    "require-dir": "^0.3.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
 }
