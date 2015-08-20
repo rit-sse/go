@@ -1,7 +1,8 @@
-var React = require('react');
-var flux = require('./flux');
+'use strict';
 
-var GoApp = require('./components/app');
-var routes = require('./routes');
+import React from 'react';
+import flux from './flux';
+
+import GoApp from './components/app';
 
 React.render(<GoApp flux={flux} />, document.getElementById('app'));

@@ -1,25 +1,22 @@
-var express = require('express');
-var api = require('sse-api-client');
-var path = require('path');
-var config = require('./config.json');
+'use strict';
 
-var app = express();
-var Links = new api(config.apiRoot.Links);
+import express from 'express';
+import API from 'sse-api-client';
+import path from 'path';
+import config from './config.json';
+
+const app = express();
+const Links = new API(config.apiRoot).Links;
 
 app.use(express.static('dist'));
 
-app.get('/', function(req, res, next) {
-  res.sendFile(path.join(__dirname, 'views', 'index.html'));
+app.get('/go', (req, res)  => res.sendFile(path.join(__dirname, 'views', 'index.html')));
+
+app.get('/go/:linkId', (req, res) => {
+  return Links
+    .one(req.params.linkId)
+    .then( r => res.redirect(r.longLink))
+    .catch( () => res.redirect('/go?error=true'));
 });
 
-app.get('/:linkId', function(req, res, next){
-  Links.all({ go_link: req.params.linkId}, function(err, r){
-    if(err || r.total_results === 0) {
-      res.redirect('/?error=true')
-    } else {
-      res.redirect(r.data.expanded_link)
-    }
-  });
-});
-
-module.exports = app;
+export default app;

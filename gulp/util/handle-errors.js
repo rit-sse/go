@@ -1,15 +1,15 @@
-var notify = require('gulp-notify');
+'use strict';
 
-module.exports = function() {
+import notify from 'gulp-notify';
 
-  var args = Array.prototype.slice.call(arguments);
+export default function handleErrors(...args) {
 
   // Send error to notification center with gulp-notify
-  notify.onError({
+  Reflect.apply(notify.onError({
     title: 'Compile Error',
-    message: '<%= error.plugin %>: <%= error.message %>'
-  }).apply(this, args);
-  
+    message: '<%= error.plugin %>: <%= error.message %>',
+  }), null, args);
+
   // Keep gulp from hanging on this task
-  this.emit('end');
-};
+  this.emit('end'); // eslint-disable-line no-invalid-this
+}

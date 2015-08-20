@@ -10,8 +10,10 @@
   ],
   "main": "app.js",
   "scripts": {
-    "start": "node ./bin/www",
-    "watch": "gulp"
+    "start": "babel-node ./bin/www",
+    "watch": "gulp",
+    "build": "gulp build",
+    "lint": "eslint . --ext .jsx,.js"
   },
   "repository": {
     "type": "git",
@@ -24,16 +26,23 @@
   },
   "homepage": "https://github.com/rit-sse/go",
   "dependencies": {
+    "babel": "^5.8.21",
     "express": "^4.13.1",
     "sse-api-client": "git://github.com/rit-sse/api-client.git"
   },
   "devDependencies": {
+    "babel-eslint": "^4.0.10",
+    "babelify": "^6.2.0",
     "browserify": "^11.0.1",
+    "eslint": "^1.2.0",
+    "eslint-plugin-react": "^3.2.3",
+    "fluxxor": "^1.7.1",
     "gulp": "^3.9.0",
     "gulp-notify": "^2.2.0",
+    "gulp-uglify": "^1.2.0",
     "react": "^0.13.3",
-    "reactify": "^1.1.1",
     "require-dir": "^0.3.0",
+    "vinyl-buffer": "^1.0.0",
     "vinyl-source-stream": "^1.1.0"
   }
 }

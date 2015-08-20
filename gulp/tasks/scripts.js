@@ -1,23 +1,32 @@
-var gulp = require('gulp');
-var source = require('vinyl-source-stream');
-var browserify = require('browserify');
-var reactify = require('reactify');
-var config = require('../config');
-var handleErrors = require('../util/handle-errors');
-var notify = require('gulp-notify');
+'use strict';
 
-var logName = 'main scripts';
+import gulp from 'gulp';
+import source from 'vinyl-source-stream';
+import browserify from 'browserify';
+import babelify from 'babelify';
+import buffer from 'vinyl-buffer';
+import uglify from 'gulp-uglify';
+import config from '../config';
+import handleErrors from '../util/handle-errors';
+import notify from 'gulp-notify';
 
-gulp.task('build:scripts', function () {
-  return browserify({
+gulp.task('build:scripts',  () =>  {
+  let bundle = browserify({
     extensions: ['.jsx'],
-    debug: true
+    debug: process.env.NODE_ENV !== 'production',
   })
-    .transform(function (f) { return reactify(f, { es6: true }) }) // use the reactify transform
+    .transform(babelify)
     .add(config.source.jsMain)
     .bundle()
-      .on('error', handleErrors)
-      .pipe(source('main.js'))
-      .pipe(gulp.dest(config.build.js))
-      .pipe(notify('Scripts done!'));
+    .on('error', handleErrors)
+    .pipe(source('main.js'));
+
+  if (process.env.NODE_ENV === 'production') {
+    bundle = bundle
+      .pipe(buffer())
+      .pipe(uglify());
+  }
+  return bundle
+    .pipe(gulp.dest(config.build.js))
+    .pipe(notify('Scripts done!'));
 });
