@@ -3,10 +3,9 @@
 import express from 'express';
 import API from 'sse-api-client';
 import path from 'path';
-import config from './config.json';
 
 const app = express();
-const Links = new API(config.apiRoot).Links;
+const Links = new API(process.env.API_ROOT).Links;
 
 app.use(express.static('dist'));
 

@@ -34,6 +34,7 @@
     "babel-eslint": "^4.0.10",
     "babelify": "^6.2.0",
     "browserify": "^11.0.1",
+    "envify": "^3.4.0",
     "eslint": "^1.2.0",
     "eslint-plugin-react": "^3.2.3",
     "fluxxor": "^1.7.1",

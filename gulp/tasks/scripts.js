@@ -9,6 +9,7 @@ import uglify from 'gulp-uglify';
 import config from '../config';
 import handleErrors from '../util/handle-errors';
 import notify from 'gulp-notify';
+import envify from 'envify/custom';
 
 gulp.task('build:scripts',  () =>  {
   let bundle = browserify({
@@ -16,6 +17,9 @@ gulp.task('build:scripts',  () =>  {
     debug: process.env.NODE_ENV !== 'production',
   })
     .transform(babelify)
+    .transform(envify({
+      API_ROOT: process.env.API_ROOT
+    }))
     .add(config.source.jsMain)
     .bundle()
     .on('error', handleErrors)
