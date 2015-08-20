@@ -1,17 +1,9 @@
 #!/usr/bin/env node
+'use strict';
 
-var app = require('../')
+import app from '../server';
 
-function startServer() {
-  var server = app.listen(3000, function () {
-    var port = server.address().port;
+const server = app.listen(process.env.PORT || 3000, () => {
+  console.log('Express server listening on port ' + server.address().port);
+});
 
-    console.log('Express server listening on port', port);
-  });
-}
-
-if (require.main === module) {
-    startServer();
-}
-
-module.exports = startServer;
