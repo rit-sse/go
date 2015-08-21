@@ -1,5 +1,7 @@
 'use strict';
+
 import api from '../api';
+import AuthActions from '../actions/auth';
 
 export default {
   signIn: {

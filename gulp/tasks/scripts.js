@@ -18,7 +18,7 @@ gulp.task('build:scripts',  () =>  {
   })
     .transform(babelify)
     .transform(envify({
-      API_ROOT: process.env.API_ROOT
+      API_ROOT: process.env.API_ROOT,
     }))
     .add(config.source.jsMain)
     .bundle()
