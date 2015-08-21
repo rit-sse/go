@@ -7,7 +7,7 @@ import path from 'path';
 const app = express();
 const Links = new API(process.env.API_ROOT).Links;
 
-app.use(express.static('dist'));
+app.use(express.static('/go/dist'));
 
 app.get('/go', (req, res)  => res.sendFile(path.join(__dirname, 'views', 'index.html')));
 

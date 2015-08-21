@@ -7,3 +7,10 @@ test:
   override:
     - npm run lint
     - npm run build
+
+deployment:
+  master:
+    branch: master
+    owner: rit-sse
+    commands:
+      - ssh deploy@$SSE_HOST 'cd /docker && docker-compose restart go nginx'
