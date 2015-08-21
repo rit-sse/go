@@ -10,22 +10,14 @@ class SSEStore {
   constructor() {
     this.loggedIn = false;
     this.err = null;
-    this.linkData = [];
+    this.linkData = null;
     this.status = null;
 
     this.registerAsync(AuthSource);
     this.registerAsync(LinksSource);
 
-    this.bindListeners({
-      onSignInSuccess: AuthActions.SIGN_IN_SUCCESS,
-      onSignInFailed: AuthActions.SIGN_IN_FAILED,
-      onGetLinksSuccess: LinksActions.GET_LINKS_SUCCESS,
-      onGetLinksFailed: LinksActions.GET_LINKS_FAILED,
-      onCreateLinkSuccess: LinksActions.CREATE_LINK_SUCCESS,
-      onCreateLinkFailed: LinksActions.CREATE_LINK_FAILED,
-      onDestroyLinkSuccess: LinksActions.DESTROY_LINK_SUCCESS,
-      onDestroyLinkFailed: LinksActions.DESTROY_LINK_FAILED,
-    });
+    this.bindActions(AuthActions);
+    this.bindActions(LinksActions);
   }
 
   setError(err) {
@@ -39,12 +31,17 @@ class SSEStore {
   }
 
   onSignInSuccess() {
-    this.err = null;
+    this.setStatus({ message: 'Signed in successfully' });
     this.loggedIn = true;
   }
 
   onSignInFailed(err) {
-    this.err = err;
+    this.setError(err);
+    this.loggedIn = false;
+  }
+
+  onSignOutSuccess() {
+    this.setStatus({ message: 'Signed out successfully' });
     this.loggedIn = false;
   }
 

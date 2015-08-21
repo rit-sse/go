@@ -9,7 +9,7 @@ const Links = new API(process.env.API_ROOT).Links;
 
 app.use('/go', express.static('dist'));
 
-app.get('/go', (req, res)  => res.sendFile(path.join(__dirname, 'views', 'index.html')));
+app.get('/go', (req, res)  => res.sendFile(path.join(__dirname, 'dist', 'index.html')));
 
 app.get('/go/:linkId', (req, res) => {
   return Links

@@ -8,5 +8,5 @@ export default alt.generateActions(
   'createLinkSuccess',
   'createLinkFailed',
   'destroyLinkSuccess',
-  'destroyLinkFailed',
+  'destroyLinkFailed'
 );
