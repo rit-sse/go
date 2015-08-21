@@ -3,11 +3,15 @@
 import React from 'react';
 import SSEStore from '../stores/sse';
 import LogIn from './log-in';
+import Notification from './notification';
+import querystring from 'querystring';
+import PageHeader from 'react-bootstrap/lib/PageHeader';
 
 export default class GoApp extends React.Component {
   constructor() {
     super();
     this.renderSignIn = this.renderSignIn.bind(this);
+    this.renderError = this.renderError.bind(this);
   }
 
   renderSignIn() {
@@ -16,17 +20,28 @@ export default class GoApp extends React.Component {
     }
 
     return (
-      <button id='sign-out' className='btn' onClick={SSEStore.signOut}>Sign Out</button>
+      <button id='sign-out' className='btn' onClick={ SSEStore.signOut }>Sign Out</button>
     );
+  }
+
+  renderError() {
+    const err = querystring.parse(location.search).error;
+    if (err) {
+      return <Notification type='danger' notice={ { message: `No Go Link found for ${err}` } } />;
+    }
+    return <span />;
   }
 
   render() {
     return (
       <div className='container'>
-        <h1>
+        <PageHeader>
           <div className='pull-right'>{ this.renderSignIn() }</div>
           <span id='title'>Go</span>
-        </h1>
+        </PageHeader>
+        { this.renderError() }
+        <Notification type='success' notice={ this.props.status } />
+        <Notification type='danger' notice={ this.props.err } />
       </div>
     );
   }
