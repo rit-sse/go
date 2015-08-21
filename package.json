@@ -26,12 +26,12 @@
   },
   "homepage": "https://github.com/rit-sse/go",
   "dependencies": {
+    "alt": "^0.17.1",
     "babel": "^5.8.21",
     "babelify": "^6.2.0",
     "browserify": "^11.0.1",
     "envify": "^3.4.0",
     "express": "^4.13.1",
-    "fluxxor": "^1.7.1",
     "gulp": "^3.9.0",
     "gulp-notify": "^2.2.0",
     "gulp-uglify": "^1.2.0",
