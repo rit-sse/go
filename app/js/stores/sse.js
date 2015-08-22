@@ -10,7 +10,7 @@ class SSEStore {
   constructor() {
     this.loggedIn = false;
     this.err = null;
-    this.linkData = null;
+    this.linkData = { data: [] };
     this.status = null;
 
     this.registerAsync(AuthSource);
@@ -46,7 +46,7 @@ class SSEStore {
   }
 
   onGetLinksSuccess(payload) {
-    this.links = payload;
+    this.linkData = payload;
     this.status = null;
   }
 
@@ -61,7 +61,7 @@ class SSEStore {
 
   onCreateLinkSuccess(payload) {
     if (parseInt(this.linkData.currentPage, 10) === 1) {
-      this.linkData.data.unShift(payload);
+      this.linkData.data.unshift(payload);
     }
     this.setStatus({ message: 'Successfully created a go link' });
   }

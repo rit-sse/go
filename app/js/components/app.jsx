@@ -7,6 +7,7 @@ import Notification from './notification';
 import querystring from 'querystring';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
 import Form from './form';
+import LinkTable from './link-table';
 
 export default class GoApp extends React.Component {
   constructor() {
@@ -28,7 +29,13 @@ export default class GoApp extends React.Component {
 
   renderFormAndList() {
     if (this.props.loggedIn) {
-      return <Form />;
+      return (
+        <div>
+          <Form />
+          <br />
+          <LinkTable linkData={ this.props.linkData }/>
+        </div>
+      );
     }
 
     return <span />;

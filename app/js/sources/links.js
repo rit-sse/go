@@ -2,21 +2,11 @@
 
 import api from '../api';
 import LinksActions from '../actions/links';
-import queryString from 'querystring';
 
 export default {
   getLinks: {
     // remotely fetch something (required)
-    remote() {
-      const query = queryString.parse(location.search);
-      const obj = {};
-      if (!isNaN(query.perPage)) {
-        obj.perPage = query.perPage;
-      }
-
-      if (!isNaN(query.page)) {
-        obj.page = query.page;
-      }
+    remote(state, obj) {
       return api.Links.all(obj);
     },
     success: LinksActions.getLinksSuccess, // (required)
