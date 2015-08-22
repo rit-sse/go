@@ -18,7 +18,8 @@ gulp.task('build:scripts',  () =>  {
   })
     .transform(babelify)
     .transform(envify({
-      API_ROOT: process.env.API_ROOT
+      API_ROOT: process.env.API_ROOT,
+      GOOGLE_CLIENT_ID: process.env.GOOGLE_CLIENT_ID,
     }))
     .add(config.source.jsMain)
     .bundle()

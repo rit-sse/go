@@ -1,8 +1,17 @@
 'use strict';
 
 import React from 'react';
-import flux from './flux';
-
+import AltContainer from 'alt/AltContainer';
 import GoApp from './components/app';
+import SSEStore from './stores/sse';
 
-React.render(<GoApp flux={flux} />, document.getElementById('app'));
+
+window.onload = () =>  {
+  gapi.load('auth2', () => {
+    React.render(
+      <AltContainer
+        store={SSEStore}
+        component={GoApp}
+      />, document.getElementById('app'));
+  });
+};

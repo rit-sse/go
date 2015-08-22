@@ -9,13 +9,13 @@ const Links = new API(process.env.API_ROOT).Links;
 
 app.use('/go', express.static('dist'));
 
-app.get('/go', (req, res)  => res.sendFile(path.join(__dirname, 'views', 'index.html')));
+app.get('/go', (req, res)  => res.sendFile(path.join(__dirname, 'dist', 'index.html')));
 
 app.get('/go/:linkId', (req, res) => {
   return Links
     .one(req.params.linkId)
     .then( r => res.redirect(r.longLink))
-    .catch( () => res.redirect('/go?error=true'));
+    .catch( () => res.redirect(`/go?error=${req.params.linkId}`));
 });
 
 export default app;
