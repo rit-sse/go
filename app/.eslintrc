@@ -15,11 +15,11 @@
     # Enforce boolean attributes notation in JSX
     react/jsx-boolean-value:
       - 2
-      - always
+      - never
     # Enforce or disallow spaces inside of curly braces in JSX attributes
     react/jsx-curly-spacing:
       - 2
-      - always
+      - never
     # Limit maximum of props on a single line in JSX
     react/jsx-max-props-per-line: 0
     # Prevent duplicate props in JSX

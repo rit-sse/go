@@ -23,7 +23,7 @@ export default class GoApp extends React.Component {
     }
 
     return (
-      <button id='sign-out' className='btn' onClick={ SSEStore.signOut }>Sign Out</button>
+      <button id='sign-out' className='btn' onClick={SSEStore.signOut}>Sign Out</button>
     );
   }
 
@@ -33,7 +33,7 @@ export default class GoApp extends React.Component {
         <div>
           <Form />
           <br />
-          <LinkTable linkData={ this.props.linkData }/>
+          <LinkTable linkData={this.props.linkData}/>
         </div>
       );
     }
@@ -42,9 +42,9 @@ export default class GoApp extends React.Component {
   }
 
   renderError() {
-    const err = querystring.parse(location.search).error;
+    const err = querystring.parse(location.search.replace('?', '')).error;
     if (err) {
-      return <Notification type='danger' notice={ { message: `No Go Link found for ${err}` } } />;
+      return <Notification type='danger' notice={{ message: `No Go Link found for ${err}` }} />;
     }
     return <span />;
   }
@@ -53,13 +53,13 @@ export default class GoApp extends React.Component {
     return (
       <div className='container'>
         <PageHeader>
-          <div className='pull-right'>{ this.renderSignIn() }</div>
+          <div className='pull-right'>{this.renderSignIn()}</div>
           <span id='title'>Go</span>
         </PageHeader>
-        { this.renderError() }
-        <Notification type='success' notice={ this.props.status } />
-        <Notification type='danger' notice={ this.props.err } />
-        { this.renderFormAndList() }
+        {this.renderError()}
+        <Notification type='success' notice={this.props.status} />
+        <Notification type='danger' notice={this.props.err} />
+        {this.renderFormAndList()}
       </div>
     );
   }

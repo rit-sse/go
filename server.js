@@ -15,7 +15,7 @@ app.get('/go/:linkId', (req, res) => {
   return Links
     .one(req.params.linkId)
     .then( r => res.redirect(r.longLink))
-    .catch( () => res.redirect('/go?error=true'));
+    .catch( () => res.redirect(`/go?error=${req.params.linkId}`));
 });
 
 export default app;

@@ -48,6 +48,7 @@ class SSEStore {
   onGetLinksSuccess(payload) {
     this.linkData = payload;
     this.status = null;
+    this.err = null;
   }
 
   onGetLinksFailed(err) {
@@ -72,6 +73,7 @@ class SSEStore {
 
   onDestroyLinkSuccess(payload) {
     this.linkData.data.splice(payload[0], 1);
+    this.linkData.total--;
     this.setStatus({ message: 'Successfully deleted a go link' });
   }
 
