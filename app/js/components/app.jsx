@@ -6,12 +6,14 @@ import LogIn from './log-in';
 import Notification from './notification';
 import querystring from 'querystring';
 import PageHeader from 'react-bootstrap/lib/PageHeader';
+import Form from './form';
 
 export default class GoApp extends React.Component {
   constructor() {
     super();
     this.renderSignIn = this.renderSignIn.bind(this);
     this.renderError = this.renderError.bind(this);
+    this.renderFormAndList = this.renderFormAndList.bind(this);
   }
 
   renderSignIn() {
@@ -22,6 +24,14 @@ export default class GoApp extends React.Component {
     return (
       <button id='sign-out' className='btn' onClick={ SSEStore.signOut }>Sign Out</button>
     );
+  }
+
+  renderFormAndList() {
+    if (this.props.loggedIn) {
+      return <Form />;
+    }
+
+    return <span />;
   }
 
   renderError() {
@@ -42,6 +52,7 @@ export default class GoApp extends React.Component {
         { this.renderError() }
         <Notification type='success' notice={ this.props.status } />
         <Notification type='danger' notice={ this.props.err } />
+        { this.renderFormAndList() }
       </div>
     );
   }
