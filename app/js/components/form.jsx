@@ -26,19 +26,19 @@ export default class Form extends React.Component {
     return  (
       <div>
         <Row>
-          <Col md={ 8 }  className='form-group'>
+          <Col md={8}  className='form-group'>
             <label htmlFor='url' className='control-label'>URL to shorten</label>
             <input id='url' type='text' className='col-md-8 big form-control'ref='long' placeholder='http://example.com'/>
           </Col>
 
-          <Col md={ 4 }  className='form-group'>
+          <Col md={4}  className='form-group'>
             <label htmlFor='vanityname' className='control-label'>Vanity Link Name</label>
             <input id='vanityname' type='text' className='col-md-4 big form-control'ref='short' placeholder='foo'/>
           </Col>
         </Row>
         <Row>
-          <Col md={ 2 } mdOffset={ 10 } className='right'>
-            <Button className='big-button' bsStyle='primary' onClick={ this.create }>Shorten</Button>
+          <Col md={2} mdOffset={10} className='right'>
+            <Button className='big-button' bsStyle='primary' onClick={this.create}>Shorten</Button>
           </Col>
         </Row>
       </div>

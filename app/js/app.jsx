@@ -10,8 +10,8 @@ window.onload = () =>  {
   gapi.load('auth2', () => {
     React.render(
       <AltContainer
-        store={ SSEStore }
-        component={ GoApp }
+        store={SSEStore}
+        component={GoApp}
       />, document.getElementById('app'));
   });
 };
