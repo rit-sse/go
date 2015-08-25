@@ -67,7 +67,7 @@ export default class LinkTable extends React.Component {
         </Modal>
 
         <strong>{this.props.linkData.total} total shortlinks.</strong>
-        <div>
+        <div className='text-center'>
           <Pagination linkData={this.props.linkData} />
         </div>
       </div>
