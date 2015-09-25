@@ -10,7 +10,7 @@ export default {
         token: googleUser.getAuthResponse().id_token,
         id: googleUser.getBasicProfile().getEmail().split('@')[0],
       };
-      return Promise.all([info, api.Officers.all({ active: true })])
+      return Promise.all([info, api.Officers.all({ active: new Date() })])
         .then(data => {
           const officers = data[1];
           if (officers.data.map(o => o.userDce).indexOf(data[0].id) !== -1) {
