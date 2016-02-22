@@ -2,6 +2,10 @@ machine:
   node:
     version: 0.12.0
 
+dependencies:
+  post:
+    - npm install eslint@2.2.0 #the cached version doesn't work
+
 # We'll write tests one day...for now we'll just run the linter
 test:
   override:

@@ -1,5 +1,3 @@
-'use strict';
-
 import api from '../api';
 import LinksActions from '../actions/links';
 import querystring from 'querystring';

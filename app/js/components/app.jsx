@@ -1,5 +1,3 @@
-'use strict';
-
 import React from 'react';
 import SSEStore from '../stores/sse';
 import LogIn from './log-in';
