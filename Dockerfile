@@ -18,10 +18,5 @@ ENV NODE_ENV=development
 COPY ./ /app
 RUN npm run build
 
-RUN npm install http-server -g
-
-WORKDIR /app/dist
-RUN mkdir go
-RUN mv * ./go || exit 0
 EXPOSE 8000
-CMD http-server -p 8000 -a 0.0.0.0 -d false
+CMD PORT=8000 npm start
