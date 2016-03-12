@@ -44,7 +44,7 @@
   },
   "devDependencies": {
     "babel-eslint": "^4.0.10",
-    "eslint": "^2.2.0",
+    "eslint": "~2.2.0",
     "eslint-plugin-react": "^3.2.3",
     "eslint-config-sse": "rit-sse/eslint"
   }
