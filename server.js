@@ -1,7 +1,3 @@
-'use strict';
-
-process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; // Temporary
-
 import express from 'express';
 import API from 'sse-api-client';
 import path from 'path';

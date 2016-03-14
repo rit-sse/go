@@ -1,5 +1,3 @@
-'use strict';
-
 import alt from '../alt';
 import AuthActions from '../actions/auth';
 import AuthSource from '../sources/auth';
