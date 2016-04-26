@@ -6,7 +6,7 @@ import API from '../api';
 export default class LogIn extends React.Component {
   constructor() {
     super();
-    this.state = { disable_login: true };
+    this.state = { disableLogin: true };
   }
 
   componentDidMount() {
@@ -21,14 +21,14 @@ export default class LogIn extends React.Component {
           cookie_policy: 'single_host_origin', // eslint-disable-line camelcase
         });
         auth2.attachClickHandler(this.refs.button.getDOMNode(), {}, SSEStore.signIn );
-        this.setState({ disable_login: false });
-      }) 
+        this.setState({ disableLogin: false });
+      })
       .catch( err => console.log(err) );
   }
 
   render() {
     return (
-      <Button disable={this.state.disable_login} id='login' bsStyle='primary' ref='button'>
+      <Button disable={this.state.disableLogin} id='login' bsStyle='primary' ref='button'>
         <i className='fa fa-google'></i> Sign In
       </Button>
     );
