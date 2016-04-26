@@ -9,8 +9,8 @@ test:
   override:
     - docker run -it ritsse/go:$CIRCLE_BRANCH npm run lint
 
-deploygont:
-  developgont:
+deployment:
+  development:
     branch: devlop
     commands:
       - docker push ritsse/go:$CIRCLE_BRANCH
