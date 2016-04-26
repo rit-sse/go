@@ -1,16 +1,22 @@
 machine:
-  node:
-    version: 5.5.0
+  services:
+    - docker
 
-# We'll write tests one day...for now we'll just run the linter
 test:
+  pre:
+    - docker login -u $DOCKER_USER -p $DOCKER_PASS -e tech@sse.rit.edu
+    - docker build -t ritsse/go:$CIRCLE_BRANCH .
   override:
-    - npm run lint
-    - npm run build
+    - docker run -it ritsse/go:$CIRCLE_BRANCH npm run lint
 
-deployment:
+deploygont:
+  developgont:
+    branch: devlop
+    commands:
+      - docker push ritsse/go:$CIRCLE_BRANCH
   master:
     branch: master
     owner: rit-sse
     commands:
-      - ssh deploy@$SSE_HOST 'cd /docker && docker-compose restart go nginx'
+      - docker tag ritsse/go:$CIRCLE_BRANCH ritsse/go
+      - docker push ritsse/go 
