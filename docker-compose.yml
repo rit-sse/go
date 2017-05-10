@@ -1,0 +1,17 @@
+version: "2"
+
+services:
+  go:
+    build: .
+    ports:
+      - 8000:8000
+    environment:
+      - API=https://sse.rit.edu
+
+  rabbit:
+    image: rabbitmq:3-management
+    ports:
+      - 8080:15672
+    environment:
+      - RABBITMQ_DEFAULT_USER=alpine
+      - RABBITMQ_DEFAULT_PASS=alpine

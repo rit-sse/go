@@ -1,6 +1,2 @@
-FROM scratch
-
-COPY ./go /go
-
-EXPOSE 8000
-CMD ["/go"]
+FROM golang:1.6-onbuild
+COPY ./ /go/src/app
