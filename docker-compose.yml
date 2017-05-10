@@ -3,6 +3,8 @@ version: "2"
 services:
   go:
     build: .
+    depends_on:
+      - rabbit
     ports:
       - 8000:8000
     environment:

@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"time"
 )
 
 type GoLinkResp struct {
@@ -61,27 +62,28 @@ func collectionRoutine() chan string {
 	// incoming information
 	stats := make(chan string)
 
+	time.Sleep(time.Second * 10)
+
 	conn, err := amqp.Dial("amqp://alpine:alpine@rabbit:5672/")
 	failOnError(err, "Failed to connect to RabbitMQ")
+
+	ch, err := conn.Channel()
+	failOnError(err, "Failed to open a channel")
+	defer ch.Close()
+
+	q, err := ch.QueueDeclare(
+		"hits", // name
+		true,   // durable
+		false,  // delete when unused
+		false,  // exclusive
+		true,   // no-wait
+		nil,    // arguments
+	)
+	failOnError(err, "Failed to declare a queue")
 
 	go func() {
 		for {
 			msg := <-stats
-
-			ch, err := conn.Channel()
-			failOnError(err, "Failed to open a channel")
-			defer ch.Close()
-
-			q, err := ch.QueueDeclare(
-				"hits", // name
-				true,   // durable
-				false,  // delete when unused
-				false,  // exclusive
-				true,   // no-wait
-				nil,    // arguments
-			)
-			failOnError(err, "Failed to declare a queue")
-
 			err = ch.Publish(
 				"",     // exchange
 				q.Name, // routing key
@@ -91,7 +93,6 @@ func collectionRoutine() chan string {
 					ContentType: "text/plain",
 					Body:        []byte(msg),
 				})
-
 		}
 	}()
 
