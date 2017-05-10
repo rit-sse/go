@@ -30,7 +30,7 @@ func failOnError(err error, msg string) {
 func FindRedirect(shortName string) string {
 	// TODO: Not reload this every time.
 	var apiHost = os.Getenv("API")
-	var apiLink = fmt.Sprintf("%s/api/v1/links/%s", apiHost, shortName)
+	var apiLink = fmt.Sprintf("%s/api/v2/links/%s", apiHost, shortName)
 	tr := &http.Transport{
 		TLSClientConfig: &tls.Config{InsecureSkipVerify: true},
 	}
