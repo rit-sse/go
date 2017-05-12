@@ -7,8 +7,7 @@ jobs:
     working_directory: /OneRepo
     branches:
       only:
-        - master
-        - devlop
+        - go
     steps:
       - setup_remote_docker
       - run:
