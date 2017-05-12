@@ -1,0 +1,31 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: docker:17.03.0-ce
+    working_directory: /OneRepo
+    branches:
+      only:
+        - master
+        - devlop
+    steps:
+      - setup_remote_docker
+      - run:
+          name: Show Info
+          command: |
+            docker version
+            docker info
+      - checkout
+      - run:
+          name: Build Fat Docker Image
+          run: |
+            docker build -t ritsse/go:2.0 .
+      - run:
+          name: Authenticate to Docker Hub
+          run: |
+            docker login -u $DOCKER_USER -p $DOCKER_PASS
+      - run:
+          name: Distribute
+          run: |
+            docker push ritsse/go:2.0
