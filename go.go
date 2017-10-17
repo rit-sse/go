@@ -50,7 +50,7 @@ func RedirectGoLink(w http.ResponseWriter, r *http.Request, stats chan string) {
 	vars := mux.Vars(r)
 	var redirect = FindRedirect(vars["id"])
 	http.Redirect(w, r, redirect, http.StatusSeeOther)
-	log.Printf("Redirect sent for %s", vars["id"])
+	log.Printf("Redirect sent for %s to %s", vars["id"], redirect)
 	stats <- vars["id"]
 }
 
